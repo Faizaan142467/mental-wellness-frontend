@@ -1,0 +1,1742 @@
+/* --------------------------------------
+   Your original React “App” classes
+   -------------------------------------- */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --------------------------------------
+   Global Reset & Base Typography
+   -------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  color: #333;
+  line-height: 1.6;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------
+   Buttons
+   -------------------------------------- */
+.btn-signup {
+  background: linear-gradient(90deg, #7b4397, #dc2430);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-signup:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(220,36,48,0.3);
+}
+
+/* --------------------------------------
+   Footer Styles
+   -------------------------------------- */
+.footer-container {
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  color: #fafafa;
+  padding: 3rem 1rem;
+}
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer-branding {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.footer-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.footer-description {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+.footer-divider {
+  border: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 2rem 0;
+}
+.footer-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.footer-signup-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* --------------------------------------
+   HomePage & Doctors Grid
+   -------------------------------------- */
+.homepage-container {
+  animation: fadeIn 0.6s ease-out;
+}
+.doctors-section {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+.section-title {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ---------- DoctorCard Overrides ---------- */
+.doctor-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ---------- Utility Classes ---------- */
+.text-center {
+  text-align: center;
+}
+
+/* --------------------------------------
+   HEADER / NAVBAR (UPDATED)
+   -------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.nav-bar {
+  padding: 0.5rem 1rem;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* left vs right */
+  flex-wrap: nowrap;              /* force one line */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* LEFT GROUP: brand + main links */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;            /* space between brand and links */
+  white-space: nowrap;  /* no breaking */
+}
+
+/* Brand (logo + CoreGlow text) */
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+  margin-left: -190px;
+}
+.brand-logo:hover {
+  transform: rotate(10deg) scale(1.05);
+}
+.brand-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fafafa;
+}
+
+/* Main nav links (About / Contact) */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin-left: -60px;
+  margin-top: 15px;
+}
+.nav-link {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fafafa;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.nav-link:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+
+/* RIGHT GROUP: Register / Login (RoleNav) */
+.role-nav-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap; /* keep buttons on same row */
+  margin-right: -200px;
+
+}
+
+/* ---------- (Optional) Mobile tweaks ---------- */
+@media (max-width: 768px) {
+  /* you can add your collapse logic here if needed */
+}
+
+/* --------------------------------------
+   Normalize the NormalHeader UL to one row
+   -------------------------------------- */
+.navbar-nav.ms-auto {
+  display: flex !important;        /* force horizontal layout */
+  flex-direction: row !important;  
+  align-items: center;             
+  margin-bottom: 0 !important;     /* kill that mb-2 */
+}
+
+/* Tighten spacing between the two items */
+.navbar-nav.ms-auto .nav-item {
+  margin: 0 0.5rem;                /* half-rem on left & right */
+}
+
+/* Optional: if you need to override that me-5 on the UL */
+.navbar-nav.ms-auto.me-5 {
+  margin-inline-end: 1rem !important;
+}
+
+.text-color{
+  color:#282c34;
+}
+
+/* --------------------------------------
+   Mental-Wellness Banner Carousel
+   -------------------------------------- */
+.banner-carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner-slide {
+  height: 400px;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  transition: opacity 0.8s ease;
+}
+
+.banner-slide:not(.active) {
+  opacity: 0;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+}
+
+.slide-content {
+  max-width: 600px;
+}
+
+.slide-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: bounce 2.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40%                   { transform: translateY(-15px); }
+  60%                   { transform: translateY(-7px); }
+}
+
+.slide-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.slide-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+
+/* ---------- DoctorCard Overrides ---------- */
+.doctor-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+
+/* --------------------------------------
+   Simple inline spinner for DoctorCard
+   -------------------------------------- */
+.img-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 270px;   /* match your img container height */
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #7b4397;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- About Us Page ---------- */
+.about-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 1rem;
+  min-height: calc(100vh - 80px); /* account for header/footer */
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+}
+
+.about-card {
+  background: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.about-card-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.about-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555;
+  text-align: center;
+}
+
+.about-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.feature-item {
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  color: #fff;
+  flex: 1 1 220px;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: pop 1.2s ease infinite;
+}
+
+@keyframes pop {
+  0%, 100%   { transform: scale(1); }
+  50%        { transform: scale(1.1); }
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.feature-desc {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.btn-about {
+  display: block;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-about:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(102,166,255,0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .about-features {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .btn-about {
+    width: 100%;
+    padding: 0.75rem;
+  }
+}
+
+/* ---------- Contact Us Page ---------- */
+.contact-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 1rem;
+  min-height: calc(100vh - 80px); /* adjust for header/footer */
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+.contact-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.contact-card-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.contact-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.25rem;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #444;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #89f7fe;
+  box-shadow: 0 0 0 3px rgba(137,247,254,0.3);
+}
+
+.btn-contact {
+  display: block;
+  margin: 1rem auto;
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-contact:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(102,166,255,0.3);
+}
+
+.contact-info {
+  margin-top: 2rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+.contact-info div {
+  margin: 0.4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.contact-info svg {
+  color: #89f7fe;
+  font-size: 1.1rem;
+  animation: pop 2s ease infinite;
+}
+
+@keyframes pop {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.1); }
+}
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+  .contact-card {
+    padding: 1.5rem;
+  }
+  .contact-info {
+    font-size: 0.8rem;
+  }
+}
+
+/* ---------- Registration Page ---------- */
+.register-page-container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  min-height: calc(100vh - 80px);
+}
+
+.register-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.register-card-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.register-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.register-form .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.form-group {
+  flex: 1 1 calc(50% - 1rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.wide {
+  flex: 1 1 100%;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #89f7fe;
+  box-shadow: 0 0 0 3px rgba(137,247,254,0.3);
+}
+
+.btn-register {
+  display: block;
+  margin: 2rem auto 0;
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-register:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(220,36,48,0.3);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .form-group {
+    flex: 1 1 100%;
+  }
+  .register-card {
+    padding: 1.5rem;
+  }
+}
+
+/* ---------- Login Page ---------- */
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+.login-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem 2.5rem;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.login-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.form-label span {
+  margin-bottom: 0.5rem;
+}
+
+.form-label select,
+.form-label input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-label select:focus,
+.form-label input:focus {
+  border-color: #89f7fe;
+  box-shadow: 0 0 0 3px rgba(137,247,254,0.3);
+}
+
+.btn-login {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #7b4397, #dc2430);
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(220,36,48,0.3);
+}
+
+/* Reuse fadeIn animation from above */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive tweak */
+@media (max-width: 400px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+}
+
+/* ---------- All Patients Page ---------- */
+.patients-page-container {
+  padding: 2rem 1rem 4rem;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.patients-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.patients-header {
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  padding: 1rem 1.5rem;
+  color: #fff;
+}
+
+.patients-header h2 {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.patients-body {
+  overflow-x: auto;
+  padding: 1rem 1.5rem;
+  background: #f9f9f9;
+}
+
+.patients-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.patients-table thead th {
+  background: #fafafa;
+  color: #444;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.75rem;
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+}
+
+.patients-table tbody tr {
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.patients-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.patients-table td {
+  padding: 0.75rem;
+  color: #333;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.btn-delete {
+  background: linear-gradient(90deg, #dc2430, #7b4397);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220,36,48,0.3);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .patients-header h2 {
+    font-size: 1.5rem;
+  }
+  .patients-table thead th,
+  .patients-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ---------- All Doctors Page ---------- */
+.doctors-page-container {
+  padding: 2rem 1rem 4rem;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.doctors-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.doctors-header {
+  background: linear-gradient(135deg, #7b4397,#dc2430);
+  padding: 1rem 1.5rem;
+  color: #fff;
+}
+
+.doctors-header h2 {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.doctors-body {
+  overflow-x: auto;
+  padding: 1rem 1.5rem;
+  background: #f9f9f9;
+}
+
+.doctors-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.doctors-table thead th {
+  background: #fafafa;
+  color: #444;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.75rem;
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+}
+
+.doctors-table tbody tr {
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doctors-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.doctors-table td {
+  padding: 0.75rem;
+  color: #333;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.doc-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-delete {
+  background: linear-gradient(90deg, #dc2430, #7b4397);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220,36,48,0.3);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .doctors-header h2 {
+    font-size: 1.5rem;
+  }
+  .doctors-table thead th,
+  .doctors-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ---------- All Appointments Page ---------- */
+.appointments-page-container {
+  padding: 2rem 1rem 4rem;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.appointments-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.appointments-header {
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  padding: 1rem 1.5rem;
+  color: #fff;
+}
+
+.appointments-header h2 {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.appointments-body {
+  overflow-x: auto;
+  padding: 1rem 1.5rem;
+  background: #f9f9f9;
+}
+
+.appointments-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.appointments-table thead th {
+  background: #fafafa;
+  color: #444;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.75rem;
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+}
+
+.appointments-table tbody tr {
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.appointments-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.appointments-table td {
+  padding: 0.75rem;
+  color: #333;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Assign button */
+.btn-assign {
+  display: inline-block;
+  background: linear-gradient(90deg, #7b4397, #dc2430);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-assign:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102,166,255,0.3);
+}
+
+/* Labels */
+.assigned-label,
+.cancelled-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.assigned-label {
+  color: #28a745;
+}
+
+.cancelled-label {
+  color: #dc3545;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .appointments-header h2 {
+    font-size: 1.5rem;
+  }
+  .appointments-table thead th,
+  .appointments-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ---------- Registration Page Container (reused) ---------- */
+.register-page-container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  min-height: calc(100vh - 80px);
+}
+
+/* ---------- Doctor Register Card (reuses .register-card) ---------- */
+.register-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.register-card-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.register-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.register-form .form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  flex: 1 1 calc(50% - 1rem);
+  display: flex;
+  flex-direction: column;
+}
+.form-group.wide {
+  flex: 1 1 100%;
+}
+
+.form-group span {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #89f7fe;
+  box-shadow: 0 0 0 3px rgba(137,247,254,0.3);
+}
+
+/* Submit Button */
+.btn-register {
+  display: block;
+  margin: 2rem auto 0;
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-register:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(220,36,48,0.3);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .form-group {
+    flex: 1 1 100%;
+  }
+  .register-card {
+    padding: 1.5rem;
+  }
+}
+
+/* ---------- My Appointments Page ---------- */
+.my-appointments-page-container {
+  padding: 2rem 1rem 4rem;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.my-appointments-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.my-appointments-header {
+  background: linear-gradient(135deg, #dc2430,#7b4397);
+  padding: 1rem 1.5rem;
+  color: #fff;
+}
+
+.my-appointments-header h2 {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.my-appointments-body {
+  overflow-x: auto;
+  padding: 1rem 1.5rem;
+  background: #f9f9f9;
+}
+
+.my-appointments-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.my-appointments-table thead th {
+  background: #fafafa;
+  color: #444;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.75rem;
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+}
+
+.my-appointments-table tbody tr {
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.my-appointments-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.my-appointments-table td {
+  padding: 0.75rem;
+  color: #333;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Cancel button */
+.btn-cancel {
+  background: linear-gradient(90deg, #dc2430, #7b4397);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-cancel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220,36,48,0.3);
+}
+
+/* Reuse fadeIn animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .my-appointments-header h2 {
+    font-size: 1.5rem;
+  }
+  .my-appointments-table thead th,
+  .my-appointments-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ---------- Treat Appointment Page ---------- */
+.treat-page-container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+.treat-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.treat-card-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.treat-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.treat-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.treat-form label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.treat-form input,
+.treat-form select,
+.treat-form textarea {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.treat-form input:focus,
+.treat-form select:focus,
+.treat-form textarea:focus {
+  border-color: #89f7fe;
+  box-shadow: 0 0 0 3px rgba(137,247,254,0.3);
+}
+
+.btn-treat {
+  display: block;
+  margin: 1.5rem auto 0;
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-treat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(102,166,255,0.3);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .treat-card {
+    padding: 1.5rem;
+  }
+}
+
+/* ---------- Doctor’s Appointments Page ---------- */
+.doctor-appointments-page-container {
+  padding: 2rem 1rem 4rem;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.doctor-appointments-card {
+  background: #fff;
+  border-radius: 1rem;
+  max-width: 1100px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.appointments-card-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.appointments-header {
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  padding: 1rem 1.5rem;
+  color: #fff;
+}
+.appointments-header h2 {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.appointments-body {
+  overflow-x: auto;
+  background: #f9f9f9;
+  padding: 1rem 1.5rem;
+}
+
+.appointments-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+.appointments-table thead th {
+  background: #fafafa;
+  color: #444;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.75rem;
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+}
+.appointments-table tbody tr {
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.appointments-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.appointments-table td {
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Update button */
+.btn-update {
+  display: inline-block;
+  background: linear-gradient(90deg, #7b4397, #dc2430);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-update:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220,36,48,0.3);
+}
+
+/* Reuse fadeIn animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .appointments-header h2 {
+    font-size: 1.5rem;
+  }
+  .appointments-table thead th,
+  .appointments-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ---------- Book Appointment Page ---------- */
+.book-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+.book-card {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.book-card-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.book-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.book-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.book-form label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.book-form input,
+.book-form textarea {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-form input:focus,
+.book-form textarea:focus {
+  border-color: #89f7fe;
+  box-shadow: 0 0 0 3px rgba(137,247,254,0.3);
+}
+
+.btn-book {
+  display: block;
+  margin: 1.5rem auto 0;
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-book:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(102,166,255,0.3);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .book-card {
+    padding: 1.5rem;
+  }
+}
+
+/* ---------- Assign Appointment Page ---------- */
+.assign-page-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem 4rem;
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.assign-card {
+  background: #fff;
+  border-radius: 1rem;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.assign-card-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.assign-header {
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  padding: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  text-align: center;
+}
+.assign-header h2 {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.assign-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.assign-body .form-group {
+  display: flex;
+  flex-direction: column;
+}
+.assign-body .form-group label {
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #444;
+}
+.assign-body .form-group input,
+.assign-body .form-group textarea,
+.assign-body .form-group select {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.assign-body .form-group input:focus,
+.assign-body .form-group textarea:focus,
+.assign-body .form-group select:focus {
+  border-color: #89f7fe;
+  box-shadow: 0 0 0 3px rgba(137,247,254,0.3);
+}
+
+.btn-assign {
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, #7b4397, #dc2430);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-assign:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(220,36,48,0.3);
+}
+
+/* reuse fadeIn keyframes if not already present */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive tweaks */
+@media (max-width: 400px) {
+  .assign-card { max-width: 100%; }
+  .assign-header h2 { font-size: 1.25rem; }
+  .btn-assign { width: 100%; }
+}
+
