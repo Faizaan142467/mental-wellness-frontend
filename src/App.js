@@ -15,6 +15,7 @@ import ViewAllPatient from "./UserComponent/ViewAllPatient";
 import ViewDoctorAppointment from "./AppointmentComponent/ViewDoctorAppointment";
 import TreatAppointment from "./AppointmentComponent/TreatAppointment";
 import DoctorRegister from "./UserComponent/DoctorRegister";
+import Payment from "./page/Payment";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           path="/doctor/appointment/:appointmentId/update"
           element={<TreatAppointment />}
         />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </div>
   );
