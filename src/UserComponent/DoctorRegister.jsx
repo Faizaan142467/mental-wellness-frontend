@@ -33,11 +33,14 @@ const DoctorRegister = () => {
 
     // fetch dropdown data
     axios.get("http://localhost:8080/api/user/gender")
-      .then((res) => setGenders(res.data.genders || []))
-      .catch(() => {});
+      .then((res) => {
+        console.log(res.data.genders);
+        setGenders(res.data.genders || [])
+      })
+      .catch(() => { });
     axios.get("http://localhost:8080/api/doctor/specialist/all")
       .then((res) => setSpecialists(res.data || []))
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   const handleChange = (e) =>

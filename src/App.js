@@ -15,10 +15,12 @@ import ViewAllPatient from "./UserComponent/ViewAllPatient";
 import ViewDoctorAppointment from "./AppointmentComponent/ViewDoctorAppointment";
 import TreatAppointment from "./AppointmentComponent/TreatAppointment";
 import DoctorRegister from "./UserComponent/DoctorRegister";
+import Payment from "./page/Payment";
+import ChatModule from "./components/chatModule";
 
 function App() {
   return (
-    <div>
+    <div className="app-container">
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -51,7 +53,9 @@ function App() {
           path="/doctor/appointment/:appointmentId/update"
           element={<TreatAppointment />}
         />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
+      <ChatModule />
     </div>
   );
 }
