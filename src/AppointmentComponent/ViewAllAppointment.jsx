@@ -37,7 +37,6 @@ const ViewAllAppointment = () => {
                 <th>Requested On</th>
                 <th>App’t Date</th>
                 <th>Status</th>
-                <th>Price</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -52,7 +51,6 @@ const ViewAllAppointment = () => {
                   <td>{a.date}</td>
                   <td>{a.appointmentDate}</td>
                   <td>{a.status}</td>
-                  <td>{a.price}</td>
                   <td>
                     {a.status !== "Cancel" ? (
                       a.doctorId === 0 ? (

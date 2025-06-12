@@ -28,7 +28,6 @@ const TreatAppointment = () => {
     const form = new FormData();
     form.append("appointmentId", appointmentId);
     form.append("prescription", prescription);
-    form.append("price", price);
     form.append("status", status);
 
     axios
@@ -63,15 +62,6 @@ const TreatAppointment = () => {
               rows="3"
               value={prescription}
               onChange={(e) => setPrescription(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Treatment Price</label>
-            <input
-              type="number"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
               required
             />
           </div>

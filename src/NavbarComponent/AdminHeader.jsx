@@ -67,7 +67,7 @@ const AdminHeader = () => {
 
       <li className="nav-item">
         <Link
-          to=""
+          to="../page/HomePage.jsx"
           className="nav-link active"
           aria-current="page"
           onClick={adminLogout}

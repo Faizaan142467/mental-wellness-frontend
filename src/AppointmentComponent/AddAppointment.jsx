@@ -1,54 +1,42 @@
 import { useState, useRef, useEffect } from "react";
-import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddAppointment = () => {
+  const navigate = useNavigate();
   const patient = JSON.parse(sessionStorage.getItem("active-patient"));
   const [appointment, setAppointment] = useState({
     patientId: patient.id,
     problem: "",
     appointmentDate: "",
+    amount: 50000, // ₹500 in paise
   });
   const cardRef = useRef();
 
   useEffect(() => {
-    // fade-in entrance
     cardRef.current.classList.add("book-card-enter");
   }, []);
 
   const handleInput = (e) =>
     setAppointment({ ...appointment, [e.target.name]: e.target.value });
 
-  const saveAppointment = (e) => {
+  const proceedToPayment = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8080/api/appointment/patient/add", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(appointment),
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to book");
-        return res.json();
-      })
-      .then(() => {
-        toast.success("Appointment added successfully!", {
-          position: "top-center",
-          autoClose: 1000,
-        });
-      })
-      .catch(() =>
-        toast.error("Could not book appointment.", {
-          position: "top-center",
-          autoClose: 1500,
-        })
-      );
+    // validate
+    if (!appointment.problem || !appointment.appointmentDate) {
+      toast.error("Fill all fields.", { position: "top-center" });
+      return;
+    }
+    // go to Payment.jsx, passing appointment
+    navigate("/payment", { state: { appointment } });
   };
 
   return (
     <div className="book-page-container">
       <div ref={cardRef} className="book-card">
         <h2 className="book-title">Book Appointment</h2>
-        <form className="book-form" onSubmit={saveAppointment}>
+        <form className="book-form" onSubmit={proceedToPayment}>
           <div className="form-group">
             <label>Describe Your Problem</label>
             <textarea
@@ -56,7 +44,6 @@ const AddAppointment = () => {
               rows="3"
               value={appointment.problem}
               onChange={handleInput}
-              placeholder="I’m experiencing…"
               required
             />
           </div>
@@ -71,7 +58,7 @@ const AddAppointment = () => {
             />
           </div>
           <button type="submit" className="btn-book">
-            Book Appointment
+            Proceed to Payment
           </button>
         </form>
       </div>

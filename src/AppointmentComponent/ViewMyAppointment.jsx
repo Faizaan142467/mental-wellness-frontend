@@ -48,7 +48,6 @@ const ViewMyAppointment = () => {
                 <th>Requested On</th>
                 <th>App’t Date</th>
                 <th>Status</th>
-                <th>Price</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -63,7 +62,6 @@ const ViewMyAppointment = () => {
                   <td>{a.date}</td>
                   <td>{a.appointmentDate}</td>
                   <td>{a.status}</td>
-                  <td>{a.price}</td>
                   <td>
                     {a.status === "Not Assigned to Doctor" && (
                       <button

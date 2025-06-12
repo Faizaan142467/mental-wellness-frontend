@@ -28,22 +28,6 @@ const DoctorCard = ({ item }) => {
   return (
     <div className="col">
       <div className="card border-color rounded-card card-hover product-card custom-bg h-100">
-        {loading ? (
-          <div className="img-spinner">
-            <div className="spinner" />
-          </div>
-        ) : imgSrc ? (
-          <img
-            src={imgSrc}
-            className="card-img-top rounded mx-auto d-block m-2"
-            alt={`${item.firstName} ${item.lastName}`}
-            style={{ maxHeight: "270px", width: "auto" }}
-          />
-        ) : (
-          <div className="img-spinner">
-            <span>No image</span>
-          </div>
-        )}
 
         <div className="card-body text-color">
           <h5 className="card-title">

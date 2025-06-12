@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../App.css";
 
 const PatientHeader = () => {
   let navigate = useNavigate();
@@ -38,7 +39,7 @@ const PatientHeader = () => {
 
       <li class="nav-item">
         <Link
-          to=""
+          to="../page/HomePage.jsx"
           class="nav-link active"
           aria-current="page"
           onClick={userLogout}

@@ -27,7 +27,7 @@ const HomePage = () => {
     <div className="homepage-container">
       <Carousel />
       <section className="illness-section">
-        <h2 className="section-title">Common Health Conditions</h2>
+        <h2 className="section-title">Common Mental Health Conditions</h2>
         <div className="illness-chips">
           {Object.keys(ILLNESS_DATA).map((illness) => (
             <button

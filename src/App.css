@@ -2403,3 +2403,166 @@ body {
     font-size: 0.9rem;
   }
 }
+
+/* --------------------------------------
+   Payment Page Styles
+   -------------------------------------- */
+.payment-page-container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #c3e2ff, #f5f7fa);
+}
+
+.payment-card {
+  background: white;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.payment-card-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-header {
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  padding: 2rem;
+  color: white;
+  text-align: center;
+}
+.payment-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.payment-subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.payment-details {
+  background: #f8fafc;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 0.8s ease-out both;
+}
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+.detail-item .label {
+  font-weight: 500;
+  color: #64748b;
+}
+.detail-item .value {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.amount-section {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.amount-label {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+.amount-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #dc2430;
+}
+
+/* Payment Button */
+.btn-payment {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-payment:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(220, 36, 48, 0.3);
+}
+.btn-payment:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Spinner inside button */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Toastify overrides */
+.Toastify__toast {
+  border-radius: 1rem;
+  font-family: inherit;
+}
+.Toastify__toast--success {
+  background: #10b981;
+}
+.Toastify__toast--error {
+  background: #ef4444;
+}
+
+/* --------------------------------------
+   Responsive adjustments
+   -------------------------------------- */
+@media (max-width: 480px) {
+  .payment-card {
+    margin: 0 1rem;
+  }
+  .card-header {
+    padding: 1.5rem;
+  }
+  .card-body {
+    padding: 1.5rem;
+  }
+  .amount-value {
+    font-size: 2rem;
+  }
+  .payment-subtitle {
+    text-align: center;
+    text-decoration: solid;
+    text-decoration-color: #282c34;
+    font-size: 2.5rem;
+    font-weight: bolder;
+  }
+}

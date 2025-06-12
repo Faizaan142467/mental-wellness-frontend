@@ -26,25 +26,25 @@ const AboutUs = () => {
         <div className="about-features">
           <div className="feature-item">
             <FaLeaf className="feature-icon" />
-            <h4 className="feature-title">Natural Calm</h4>
+            <h4 className="feature-title">Insightful Tracking</h4>
             <p className="feature-desc">
-              Guided breathing and relaxation exercises to soothe your mind.
+              Mood and habit tracking to help you discover healthy patterns.
             </p>
           </div>
 
           <div className="feature-item">
             <FaSmileBeam className="feature-icon" />
-            <h4 className="feature-title">Daily Uplifts</h4>
+            <h4 className="feature-title">Expert Consultations</h4>
             <p className="feature-desc">
-              Positive affirmations and tips delivered every morning.
+              Book Appointmnent with certified Experts for personalized mental health support.
             </p>
           </div>
 
           <div className="feature-item">
             <FaBrain className="feature-icon" />
-            <h4 className="feature-title">Insightful Tracking</h4>
+            <h4 className="feature-title">AI ChatBot</h4>
             <p className="feature-desc">
-              Mood and habit tracking to help you discover healthy patterns.
+              Round-the-clock support to help users navigate their mental wellness journey with ease and privacy.
             </p>
           </div>
         </div>

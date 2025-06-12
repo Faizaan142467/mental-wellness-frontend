@@ -9,11 +9,7 @@ const Footer = () => {
         <div className="footer-branding">
           <h2 className="footer-title">CoreGlow</h2>
           <p className="footer-description">
-            The hospital management system helps register complete patient
-            information. It captures and stores the medical history,
-            treatment required, details of previous visits,
-            upcoming appointments, reports, insurance details and more.
-            Eliminate redundant paperwork and focus on patient care.
+            CoreGlow is a mental wellness app designed to support your emotional health through real conversations and professional care. Chat privately with our AI-powered mental health assistant for immediate support, or easily book appointments with certified psychiatrists and psychologists. CoreGlow is your safe, judgment-free space to express, connect, and begin your journey to better mental well-being.
           </p>
         </div>
 

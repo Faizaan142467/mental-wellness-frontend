@@ -36,7 +36,6 @@ const ViewDoctorAppointment = () => {
                 <th>Requested On</th>
                 <th>App’t Date</th>
                 <th>Status</th>
-                <th>Price</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -51,7 +50,6 @@ const ViewDoctorAppointment = () => {
                   <td>{a.date}</td>
                   <td>{a.appointmentDate}</td>
                   <td>{a.status}</td>
-                  <td>{a.price}</td>
                   <td>
                     <Link
                       to={`/doctor/appointment/${a.id}/update`}
